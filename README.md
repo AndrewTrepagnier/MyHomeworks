@@ -1,3 +1,1 @@
-Expirementing with making my preferred plot syling.
-
-![image](https://github.com/user-attachments/assets/e840df76-d087-499e-a63f-a394b4aea084)
+Miscellaneous jupyter files and python scripts I made for homeworks and projects throughout the Fall 2025 Semester.
