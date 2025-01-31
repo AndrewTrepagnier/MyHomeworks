@@ -1,0 +1,37 @@
+BREAST CANCER DATASET - SIMPLE REPORT
+Generated on: 2025-01-25 11:28:03
+--------------------------------------------------
+
+PATIENT COUNTS:
+Total Patients: 569
+Malignant (Cancer): 212
+Benign (Not Cancer): 357
+
+KEY MEASUREMENTS:
+mean radius: 14.13
+mean texture: 19.29
+mean perimeter: 91.97
+mean area: 654.89
+mean smoothness: 0.10
+
+MODEL PERFORMANCE:
+--------------------
+
+Random Forest:
+Accuracy: 97.08%
+Error Rate: 2.92%
+
+SVM:
+Accuracy: 93.57%
+Error Rate: 6.43%
+
+Neural Network:
+Accuracy: 95.91%
+Error Rate: 4.09%
+
+KNN:
+Accuracy: 95.91%
+Error Rate: 4.09%
+
+BEST CLASSIFIER:
+Random Forest (Accuracy: 97.08%)
