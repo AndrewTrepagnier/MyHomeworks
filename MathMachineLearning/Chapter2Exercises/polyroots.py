@@ -15,6 +15,7 @@ class poly:
     def __init__(self, name, coe=None): # this initialized a polynomial with a name
         self.name = name
         self.coe = coe      
+        self.roots = []  # Add roots attribute
           
     def assign_coefficients(self, new_coe):
         self.coe = new_coe[0]  # Remove the extra tuple nesting
@@ -34,6 +35,19 @@ class poly:
         
         plt.figure(figsize=(10, 6))
         plt.plot(x, y, 'b-', label=self.name)
+        
+        # Add markers for roots if they exist
+        if self.roots:
+            for root in self.roots:
+                plt.plot(root, 0, 'ro', markersize=10)
+        
+        # Add markers for critical points if they exist
+        critical_points = all_minima_maxima(self)
+        if critical_points:
+            for cp in critical_points:
+                plt.plot(cp, self.evaluate(cp), 'go', markersize=10, 
+                        label='Critical Points')
+        
         plt.grid(True, alpha=0.3)
         plt.xlabel('x')
         plt.ylabel('P4(x)')
@@ -64,6 +78,24 @@ def newton_horner(A, x0, tol, itmax):
             break
     return x, it
 
+def all_minima_maxima(polynomial):
+    """Find all x values where P'(x) = 0 using Newton's method"""
+    
+    # Derivative coefficients using Horner
+    deriv_coeffs = []
+    for i in range(len(polynomial.coe)-1):
+        deriv_coeffs.append(polynomial.coe[i] * (len(polynomial.coe)-i-1))
+    
+    minima_maxima = []
+    #
+    for x0 in [-2, 0, 2]:  # adjustable these starting points
+        x, it = newton_horner(deriv_coeffs, x0, 10**(-12), 1000)
+        if x not in minima_maxima:  # Avoid duplicates
+            minima_maxima.append(x)
+            print(f"Found critical point at x = {x}")
+    
+    return minima_maxima
+
 polynomial4 = poly("Polynomial-4", None) # Initialized my new polynomial I called "Polynomial-4"
 polynomial4.assign_coefficients([(2, -5, -11, 20, 10)]) #Assigned it whatever coefficients I want the coefficients 
 
@@ -79,17 +111,29 @@ if __name__ == '__main__':
     
     tol = 10**(-12)
     itmax = 1000
-    roots_array = []
 
     for x0 in [-2.5, -1,  1.5, 3]:
-
         x,it = newton_horner(polynomial4.coe,x0,tol,itmax)
-        roots_array.append(x)
-    print("For %f as the initial guess and %d iterations, the root found was %f"%(x0, it, x))
-
+        polynomial4.roots.append(x)
+        print("For %f as the initial guess and %d iterations, the root found was %f"%(x0, it, x))
 
 """
 PART C
 """
+polynomial4.plot(-3, 4)  
+
+"""
+PART D
+"""
+
+# Example usage:
+critical_points = all_minima_maxima(polynomial4)
+polynomial4.plot(-3, 4)  
+
+
+"""
+PART E
+"""
+
 
 
