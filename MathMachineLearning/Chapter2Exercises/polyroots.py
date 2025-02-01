@@ -7,6 +7,7 @@ Let P4(x) = 2x^4 - 5x^3 - 11x^2 + 20^x + 10. Solve the following.
 (d) Find all roots of P4'(x) = 0.
 (e) Add markers for the zeros of P4' to the plot.
 """
+#By Andrew Trepagnier - alt658
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -41,7 +42,7 @@ class poly:
             for root in self.roots:
                 plt.plot(root, 0, 'ro', markersize=10)
         
-        # Add markers for critical points if they exist
+        
         critical_points = all_minima_maxima(self)
         if critical_points:
             for cp in critical_points:
@@ -135,5 +136,5 @@ polynomial4.plot(-3, 4)
 PART E
 """
 
-
+#See Plot
 
