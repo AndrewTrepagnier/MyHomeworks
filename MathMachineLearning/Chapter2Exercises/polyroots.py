@@ -97,6 +97,7 @@ def all_minima_maxima(polynomial):
     
     return minima_maxima
 
+#Defining an object of the class and assigning it coefficients using method:
 polynomial4 = poly("Polynomial-4", None) # Initialized my new polynomial I called "Polynomial-4"
 polynomial4.assign_coefficients([(2, -5, -11, 20, 10)]) #Assigned it whatever coefficients I want the coefficients 
 
